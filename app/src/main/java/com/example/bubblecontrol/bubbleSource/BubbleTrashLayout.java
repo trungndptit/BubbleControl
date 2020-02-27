@@ -78,6 +78,7 @@ class BubbleTrashLayout extends BubbleBaseLayout {
         super.setVisibility(visibility);
     }
 
+    // when bubble is in the trash
     void applyMagnetism() {
         if (!magnetismApplied) {
             magnetismApplied = true;
@@ -93,6 +94,7 @@ class BubbleTrashLayout extends BubbleBaseLayout {
         }
     }
 
+    // when bubble isn't in the trash
     void releaseMagnetism() {
         if (magnetismApplied) {
             magnetismApplied = false;

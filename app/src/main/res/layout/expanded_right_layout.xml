@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.bubblecontrol.bubbleSource.BubbleLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<com.example.bubblecontrol.bubbleSource.ExpandedLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -71,4 +71,4 @@
         </RelativeLayout>
     </RelativeLayout>
 
-</com.example.bubblecontrol.bubbleSource.BubbleLayout>
+</com.example.bubblecontrol.bubbleSource.ExpandedLayout>

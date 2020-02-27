@@ -49,6 +49,8 @@ public class BubblesService extends Service {
     private WindowManager windowManager;
     private BubblesLayoutCoordinator layoutCoordinator;
 
+    private ExpandedLayout mExpandedLayout;
+
     @Override
     public IBinder onBind(Intent intent) {
         return binder;
@@ -79,6 +81,15 @@ public class BubblesService extends Service {
         });
     }
 
+    private void removeExpanded(final ExpandedLayout expandedLayout){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                getWindowManager().removeView(expandedLayout);
+            }
+        });
+    }
+
     private WindowManager getWindowManager() {
         if (windowManager == null) {
             windowManager = (WindowManager)getSystemService(WINDOW_SERVICE);
@@ -93,6 +104,17 @@ public class BubblesService extends Service {
         bubble.setLayoutCoordinator(layoutCoordinator);
         bubbles.add(bubble);
         addViewToWindow(bubble);
+    }
+
+    public void addExpanded(ExpandedLayout expandedLayout, int x, int y){
+        WindowManager.LayoutParams layoutParams = buildLayoutParamsForBubble(x, y);
+        expandedLayout.setWindowManager(getWindowManager());
+        expandedLayout.setViewParams(layoutParams);
+        addExpandedViewToWindow(expandedLayout);
+    }
+
+    public void recycleExpanded(ExpandedLayout expandedLayout){
+        removeExpanded(expandedLayout);
     }
 
     void addTrash(int trashLayoutResourceId) {
@@ -115,6 +137,15 @@ public class BubblesService extends Service {
     }
 
     private void addViewToWindow(final BubbleBaseLayout view) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                getWindowManager().addView(view, view.getViewParams());
+            }
+        });
+    }
+
+    private void addExpandedViewToWindow(final ExpandedLayout view){
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {

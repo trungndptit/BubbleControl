@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bubblecontrol.bubbleSource.BubbleLayout;
 import com.example.bubblecontrol.bubbleSource.BubblesManager;
+import com.example.bubblecontrol.bubbleSource.ExpandedLayout;
 import com.example.bubblecontrol.bubbleSource.OnInitializedCallback;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,13 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void addNewBubble() {
         final BubbleLayout bubbleView = (BubbleLayout) LayoutInflater.from(MainActivity.this).inflate(R.layout.bubble_layout, null);
-//        final BubbleLayout expandedRightView = (BubbleLayout) LayoutInflater.from(MainActivity.this).inflate(R.layout.expanded_right_layout, null);
-        final View collapsedView = bubbleView.findViewById(R.id.collapse_view);
-        //The root element of the expanded view layout
-        final View expandedView = bubbleView.findViewById(R.id.expand_container);
-        final View expandedRightView1 = bubbleView.findViewById(R.id.expand_container_right);
+        final ExpandedLayout expandedLayoutLeft = (ExpandedLayout) LayoutInflater.from(MainActivity.this).inflate(R.layout.expanded_left_layout, null);
+        final ExpandedLayout expandedLayoutRight = (ExpandedLayout) LayoutInflater.from(MainActivity.this).inflate(R.layout.expanded_right_layout, null);
 
-//        BubbleLayout bubbleView = (BubbleLayout) LayoutInflater.from(MainActivity.this).inflate(R.layout.bubble_layout, null);
+        final View collapsedView = bubbleView.findViewById(R.id.collapse_view);
+        final View expandedView = expandedLayoutLeft.findViewById(R.id.expand_container);
+
+
+        final View expandedViewLeft01 = expandedLayoutLeft.findViewById(R.id.avatar01);
+        final View expandedViewRight01 = expandedLayoutRight.findViewById(R.id.avatar01);
         bubbleView.setOnBubbleRemoveListener(new BubbleLayout.OnBubbleRemoveListener() {
             @Override
             public void onBubbleRemoved(BubbleLayout bubble) {
@@ -53,37 +56,44 @@ public class MainActivity extends AppCompatActivity {
                 int x = location[0];
                 int y = location[1];
 
+
+                System.out.println("Debug Collapse: " + x +" " + y);
+
                 collapsedView.setVisibility(View.GONE);
                 if (x < 200){
-                    expandedView.setVisibility(View.VISIBLE);
+                    bubblesManager.addExpanded(expandedLayoutLeft, x, y-320);
                 } else {
-                    expandedRightView1.setVisibility(View.VISIBLE);
+                    bubblesManager.addExpanded(expandedLayoutRight, x, y-300);
                 }
+
+                int w = expandedLayoutLeft.getWidth();
+                int h = expandedLayoutLeft.getHeight();
 
                 bubbleView.setIsExpanded(true);
                 Toast.makeText(getApplicationContext(), "Clicked !",
                         Toast.LENGTH_SHORT).show();
             }
-
+        });
+        expandedViewLeft01.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onExpandedClick(BubbleLayout bubble) {
+            public void onClick(View view) {
                 collapsedView.setVisibility(View.VISIBLE);
-                if (expandedView.getVisibility() == View.VISIBLE){
-                    expandedView.setVisibility(View.GONE);
-                } else{
-                    expandedRightView1.setVisibility(View.GONE);
-                }
-                int[] location = new int[2];
-                expandedView.getLocationOnScreen(location);
-                int x = location[0];
-                int y = location[1];
-                System.out.println("Debug view: " + x + " " + y);
+                bubblesManager.removeExpanded(expandedLayoutLeft);
             }
         });
+        expandedViewRight01.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                collapsedView.setVisibility(View.VISIBLE);
+                bubblesManager.removeExpanded(expandedLayoutRight);
+            }
+        });
+
         bubbleView.setShouldStickToWall(true);
         bubblesManager.addBubble(bubbleView, 60, 20);
     }
 
+    // Config BubbleManager + set TrashLayout + add a new bubble
     private void initializeBubblesManager() {
         bubblesManager = new BubblesManager.Builder(this)
                 .setTrashLayout(R.layout.bubble_trash_layout)
