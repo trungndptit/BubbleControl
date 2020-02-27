@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.bubblecontrol.bubbleSource.ExpandedLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/expand_container"
+        android:visibility="visible"
+        android:layout_width="180dp"
+        android:layout_height="270dp">
+
+        <ImageView
+            android:id="@+id/iv_x"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            android:src="@drawable/x" />
+
+        <ImageView
+            android:id="@+id/iv_pause"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_above="@id/iv_x"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pause" />
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_above="@id/tv_x_point"
+            android:layout_toEndOf="@id/tv_x_point"
+            android:scaleType="centerCrop"
+            android:src="@drawable/play" />
+
+        <TextView
+            android:id="@+id/tv_x_point"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/iv_x"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+
+        <ImageView
+            android:id="@+id/iv_setting"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/tv_x_point"
+            android:layout_toEndOf="@id/tv_x_point"
+            android:scaleType="centerCrop"
+            android:src="@drawable/setting" />
+
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/iv_x"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/home" />
+    </RelativeLayout>
+
+</com.example.bubblecontrol.bubbleSource.ExpandedLayout>

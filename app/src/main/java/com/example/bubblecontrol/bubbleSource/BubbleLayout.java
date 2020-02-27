@@ -90,12 +90,6 @@ public class BubbleLayout extends BubbleBaseLayout {
                     lastTouchDown = System.currentTimeMillis();
                     updateSize();
                     animator.stop();
-
-                    if (isExpanded) {
-                        if (onBubbleClickListener != null) {
-                            onBubbleClickListener.onExpandedClick(this);
-                        }
-                    }
                     break;
                 case MotionEvent.ACTION_MOVE:
                     int x = initialX + (int) (event.getRawX() - initialTouchX);
@@ -109,20 +103,14 @@ public class BubbleLayout extends BubbleBaseLayout {
                     break;
                 case MotionEvent.ACTION_UP:
                     goToWall();
-                    System.out.println("Debug x= " + getViewParams().x + " y= " + getViewParams().y);
                     if (getLayoutCoordinator() != null) {
                         getLayoutCoordinator().notifyBubbleRelease(this);
                         playAnimationClickUp();
                     }
-                    if (!isExpanded) {
-                        if (System.currentTimeMillis() - lastTouchDown < TOUCH_TIME_THRESHOLD) {
-                            if (onBubbleClickListener != null) {
+                    if (System.currentTimeMillis() - lastTouchDown < TOUCH_TIME_THRESHOLD) {
+                        if (onBubbleClickListener != null) {
                                 onBubbleClickListener.onBubbleClick(this);
-                            }
                         }
-                    } else {
-                        setIsExpanded(false);
-
                     }
                     break;
             }
@@ -193,8 +181,6 @@ public class BubbleLayout extends BubbleBaseLayout {
 
     public interface OnBubbleClickListener {
         void onBubbleClick(BubbleLayout bubble);
-
-        void onExpandedClick(BubbleLayout bubble);
     }
 
     // class MoveAnimator

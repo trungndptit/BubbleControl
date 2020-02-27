@@ -93,6 +93,16 @@ public class BubblesManager {
         }
     }
 
+    public void addExpanded(ExpandedLayout expandedLayout, int x, int y){
+        if (bounded){
+            bubblesService.addExpanded(expandedLayout, x, y);
+        }
+    }
+
+    public void removeExpanded(ExpandedLayout expandedLayout){
+        bubblesService.recycleExpanded(expandedLayout);
+    }
+
     public static class Builder {
         private BubblesManager bubblesManager;
 

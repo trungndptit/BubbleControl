@@ -12,82 +12,13 @@
         android:visibility="visible">
 
         <ImageView
-            android:id="@+id/avatar"
+            android:id="@+id/iv_camera"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
             android:layout_centerVertical="true"
-            android:background="@drawable/profile_decorator"
             android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_centerVertical="true"
-            android:background="@drawable/bubble_counter_bkg"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:text="1"
-            android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:src="@drawable/camera" />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/expand_container"
-        android:visibility="visible"
-        android:layout_width="180dp"
-        android:layout_height="270dp">
-
-        <ImageView
-            android:id="@+id/avatar01"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center"
-            android:background="@drawable/profile_decorator"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
-
-        <ImageView
-            android:id="@+id/avatar02"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/profile_decorator"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
-
-        <ImageView
-            android:id="@+id/avatar03"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="90dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/profile_decorator"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
-
-        <ImageView
-            android:id="@+id/avatar04"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="90dp"
-            android:layout_marginTop="135dp"
-            android:background="@drawable/profile_decorator"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
-
-        <ImageView
-            android:id="@+id/avatar05"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="185dp"
-            android:background="@drawable/profile_decorator"
-            android:scaleType="centerCrop"
-            android:src="@drawable/profile" />
-    </RelativeLayout>
 </com.example.bubblecontrol.bubbleSource.BubbleLayout>
