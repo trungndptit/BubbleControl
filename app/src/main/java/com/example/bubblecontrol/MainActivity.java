@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         final View collapsedView = bubbleView.findViewById(R.id.collapse_view);
         final View expandedView = expandedLayoutLeft.findViewById(R.id.expand_container);
 
-
         final View expandedViewLeft01 = expandedLayoutLeft.findViewById(R.id.iv_x);
         final View expandedViewRight01 = expandedLayoutRight.findViewById(R.id.iv_x);
         bubbleView.setOnBubbleRemoveListener(new BubbleLayout.OnBubbleRemoveListener() {
