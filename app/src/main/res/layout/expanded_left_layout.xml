@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.example.bubblecontrol.bubbleSource.ExpandedLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/trans"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,8 +15,8 @@
             android:id="@+id/iv_x"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_centerVertical="true"
             android:layout_gravity="center"
+            android:layout_centerVertical="true"
             android:scaleType="centerCrop"
             android:src="@drawable/x" />
 
@@ -66,4 +67,4 @@
             android:src="@drawable/home" />
     </RelativeLayout>
 
-</com.example.bubblecontrol.bubbleSource.ExpandedLayout>
+</FrameLayout>

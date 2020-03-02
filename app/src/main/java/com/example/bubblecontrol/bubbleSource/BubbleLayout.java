@@ -32,7 +32,6 @@ public class BubbleLayout extends BubbleBaseLayout {
 
     private WindowManager windowManager;
     private boolean shouldStickToWall = true;
-    private boolean isExpanded = false;
 
     public BubbleLayout(Context context) {
         super(context);
@@ -66,10 +65,6 @@ public class BubbleLayout extends BubbleBaseLayout {
 
     public void setShouldStickToWall(boolean shouldStick) {
         this.shouldStickToWall = shouldStick;
-    }
-
-    public void setIsExpanded(Boolean isExpanded) {
-        this.isExpanded = isExpanded;
     }
     //end set ------------------------
 
@@ -171,7 +166,7 @@ public class BubbleLayout extends BubbleBaseLayout {
         Point size = new Point();
         display.getSize(size);
         width = (size.x - this.getWidth());
-
+        System.out.println("Debug Width: " + width + " sizeX= " + size.x);
     }
 
     // 2 interface handle action click and remove
